@@ -1,11 +1,30 @@
 import pandas as pd
-import numpy as np
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from tensorflow.keras import layers, models
+import re
+
+tf.config.set_visible_devices([], 'GPU')
+
+def clean_data(text):
+    """
+    :param text:
+    :return:
+    """
+    text = str(text).lower()
+    text = re.sub(r'^subject: ', '', text)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
 
 def load_data():
+    """
+    :param text:
+    :return:
+    """
     df = pd.read_csv("../dataset/emails.csv")
+    df = df.drop_duplicates()
+    df['Text'] = df['Text'].apply(clean_data)
 
     df = df.sample(n=5000, random_state=42)
 
@@ -21,6 +40,10 @@ def load_data():
     return X_train, X_test, y_train, y_test
 
 def create_vectorizer(X_train):
+    """
+    :param text:
+    :return:
+    """
     vectorize_layer = layers.TextVectorization(
         max_tokens=10000,
         output_mode='int',
@@ -32,6 +55,10 @@ def create_vectorizer(X_train):
     return vectorize_layer
 
 def build_model(vectorize_layer):
+    """
+    :param text:
+    :return:
+    """
     model = models.Sequential([
         tf.keras.Input(shape=(1,), dtype=tf.string),
         vectorize_layer,
@@ -49,7 +76,7 @@ def build_model(vectorize_layer):
 
 def evaluate_model(model, X_test, y_test):
     loss, accuracy = model.evaluate(X_test, y_test)
-    print(f"Test Accuracy: {accuracy}")
+    print(f"Test Accuracy: {accuracy:.3f}")
 
 def save_model(model, model_path="model.keras"):
     model.save(model_path)
@@ -62,7 +89,7 @@ def main():
 
     model.fit(
         X_train, y_train,
-        epochs=10,
+        epochs=15,
         batch_size=16,
         validation_data=(X_test, y_test))
 
