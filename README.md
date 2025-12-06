@@ -39,6 +39,7 @@ weighted avg       0.97      0.97      0.97       500
 ```
   * **Confusion Matrix:** visualizes False Positives and False Negatives.
   * **ROC Curve:** Measures the model's ability to distinguish between classes.
+
 ![cm_roc](https://github.com/MyroslavNatalchenko/NLP_Email_Analyzer/blob/main/img/cm_roc.png)
 
 ## Usage
