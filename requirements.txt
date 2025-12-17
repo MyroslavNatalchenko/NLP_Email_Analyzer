@@ -1,9 +1,0 @@
-tensorflow
-fastapi
-pydantic
-streamlit
-requests
-pandas
-matplotlib
-seaborn
-scikit-learn

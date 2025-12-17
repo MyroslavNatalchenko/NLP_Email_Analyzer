@@ -6,7 +6,7 @@ st.set_page_config(page_title="Email spam recognizer", layout="centered")
 st.title("Email spam recognizer")
 st.write("Enter an email below to check if it is spam or no")
 
-user_input = st.text_area("Email text", height=158, placeholder="Enter text from email here...")
+user_input = st.text_area("Email text", height=142, placeholder="Enter text from email here...")
 
 API_URL = "http://127.0.0.1:8000/predict"
 
@@ -25,9 +25,9 @@ if st.button("Check Category"):
                 st.divider()
 
                 if is_spam:
-                    st.error(f"SPAM")
+                    st.error("SPAM")
                 else:
-                    st.success(f"NOT SPAM")
+                    st.success("NOT SPAM")
 
                 st.caption(f"Confidence: {confidence:.2%}")
             else:

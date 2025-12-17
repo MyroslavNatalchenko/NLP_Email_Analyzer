@@ -7,10 +7,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 
-# Disable GPU if needed (as per original code)
-tf.config.set_visible_devices([], 'GPU')
-
-
 def clean_data(text):
     """
     Cleans text by converting to lowercase, removing 'Subject:' prefix,
@@ -30,7 +26,6 @@ def load_data():
     df = pd.read_csv("../dataset/emails.csv")
     df['Text'] = df['Text'].apply(clean_data)
 
-    # Sampling 5000 rows as per requirements
     df = df.sample(n=5000, random_state=42)
 
     X = df['Text'].astype(str).values

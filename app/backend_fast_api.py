@@ -10,12 +10,13 @@ try:
 except Exception as e:
     print(f"Error loading model: {e}")
 
-
 class EmailRequest(BaseModel):
     text: str
 
-
 def clean_text(text):
+    """
+    Cleaning of text before throwing to our model
+    """
     import re
     text = str(text).lower()
     text = re.sub(r'^subject: ', '', text)

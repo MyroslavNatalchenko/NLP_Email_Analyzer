@@ -7,12 +7,12 @@ Full-stack ML app designed to classify emails as "Spam" or "Not Spam" [Ham]. Thi
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Model Evaluation](#model-evaluation)
-4. [Usage](#usage)
+3. [Usage](#usage)
     - [1. Download libraries](#1-train-the-model)
     - [2. Start the Backend](#2-start-the-backend)
     - [3. Start the Frontend](#3-start-the-frontend)
-5. [Project Structure](#project-structure)
-6. [Tech Stack](#tech-stack)
+4. [Project Structure](#project-structure)
+5. [Tech Stack](#tech-stack)
 
 ---
 
@@ -44,7 +44,7 @@ weighted avg       0.97      0.97      0.97       500
 
 ## Usage
 
-### 1\. Download all needable libraries for your environment
+### 1\. Download all libraries needed for your environment
 
 ```bash
 pip install -r requirements.txt
@@ -85,8 +85,8 @@ streamlit run frontend_streamlit.py
 
 ## Tech Stack
 
-  * **Language:** Python 3.10+
+  * **Language:** Python 3.10
   * **Machine Learning:** TensorFlow, Keras, Scikit-learn, Pandas, NumPy
-  * **Backend:** FastAPI, Uvicorn
+  * **Backend:** FastAPI with Uvicorn
   * **Frontend:** Streamlit
   * **Visualization:** Matplotlib, Seaborn
